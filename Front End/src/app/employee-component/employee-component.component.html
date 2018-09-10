@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Save Employee</title>
+</head>
+
+<body>
+	
+			<h2>Employee Management</h2>
+
+		<h3>Save Employee</h3>
+		<p>
+			Enter Valid Data
+		</p>	
+		<form >
+		
+
+		
+			<table>
+				<tbody>
+					<tr>
+						<td><label>First name:</label></td>
+						<td><input type="text" name="firstName" required minlength="3" [(ngModel)]="theEmployee.firstName" #fName="ngModel"/></td>
+					</tr>
+					<div *ngIf = "fName.invalid" style="background-color:rgb(230, 79, 52)">
+						Minimum Length should be 3					
+
+					</div>
+				
+					<tr>
+						<td><label>Last name:</label></td>
+						<td><input type="text" name="lastName"   [(ngModel)]="theEmployee.lastName"/></td>
+					</tr>
+
+					<tr>
+						<td><label>Email:</label></td>
+						<td><input type="text" name="email"   [(ngModel)]="theEmployee.email"/></td>
+					</tr>
+
+					<tr>
+						<td><label>Contact</label></td>
+						<td><input type="text" name="contact"   [(ngModel)]="theEmployee.contact"/></td>
+					</tr>
+
+					<!-- <p>{{theEmployee|json}}</p> -->
+
+					<tr>
+						<td><label></label></td>
+						<td><input type="submit" value="Local Save" (click)="addEmployee()"/></td>
+					</tr>
+				
+				</tbody>
+			</table>
+	
+    <input type="button" value="To Database - Case I"
+		(click)="addToDBI()"/>
+		
+    <input type="button" value="To Database - Case II"
+    (click)="addToDBII()"
+    />
+</form>
+
+  <hr>
+  <h2>Database of Local Data</h2>
+  
+	<table>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email Name</th>
+        <th>Contact Name</th>
+      </tr>
+	
+			
+        <tr *ngFor = "let employee of employees">
+					<td >{{employee.firstName}}</td>
+					<td >{{employee.lastName}}</td>
+					<td >{{employee.email}}</td>
+					<td >{{employee.contact}}</td>
+					
+         
+        </tr>
+  
+    </table>
+
+<hr>
+  <h2>Database of Employee Table</h2>
+
+<table>
+	<tr>
+	  <th>First Name</th>
+	  <th>Last Name</th>
+	  <th>Email Name</th>
+	  <th>Contact Name</th>
+	</tr>
+  
+		  
+	  <tr *ngFor = "let employee of employees_FromDB">
+				  <td >{{employee.firstName}}</td>
+				  <td >{{employee.lastName}}</td>
+				  <td >{{employee.email}}</td>
+				  <td >{{employee.contact}}</td>
+	  </tr>
+
+  </table>
+
+</body>
+
+</html>
